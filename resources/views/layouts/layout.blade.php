@@ -6,6 +6,7 @@
     @include('layouts.style-sheet')
     <meta name='csrf-token' content='{{ csrf_token() }}'>
     <script src='{{ asset("js/app.js") }}'defer></script>
+    <script src='{{ asset("js/main.js") }}'defer></script>
   </head>
   <body>
     @include('layouts.nav')
