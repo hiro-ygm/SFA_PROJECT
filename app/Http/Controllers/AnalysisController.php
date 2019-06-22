@@ -14,6 +14,7 @@ class AnalysisController extends Controller
     public function index()
     {
         return view('/analysis/index');
+        // return view('/analysis/dashboard');
     }
 
     /**

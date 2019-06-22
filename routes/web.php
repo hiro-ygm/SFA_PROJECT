@@ -14,6 +14,7 @@ Route::get('/project/index', 'ProjectController@index')->name('project.index');
 
 Route::get('/chat/index', 'ChatController@index')->name('chat.index');
 Route::get('/chat/create', 'ChatController@create')->name('chat.create');
+Route::get('/chat/show/{room_id?}', 'ChatController@show')->name('chat.show');
 
 Route::get('/analysis/index', 'AnalysisController@index')->name('analysis.index');
 

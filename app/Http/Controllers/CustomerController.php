@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customer;
+use App\User;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -11,9 +14,26 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('/customer/index');
+//個人名、メールアドレス、部署名の検索
+        if($request->filled('keyword')) {
+          $keyword = $request->input('keyword');
+          $users = User::with('customer')->where(DB::raw('CONCAT(name,email,department)'), 'like', '%' . $keyword . '%')->get();
+        } else {
+          $users = User::with('customer')->get();
+        }
+
+//会社名の検索
+        // if($request->filled('keyword')) {
+        //   $keyword = $request->input('keyword');
+        //   $users = User::whereHas('customer', function($q){
+        //     $q->where('company_name', 'like', '%' . $keyword . '%');})->get();
+        // } else {
+        //   $users = User::with('customer')->get();
+        // }
+
+        return view('/customer/index')->with('users', $users);
     }
 
     /**

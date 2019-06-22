@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Chatwork;
 
+define("CHATWORK_ROOM_ID", "155404542");
+
 class ChatController extends Controller
 {
     /**
@@ -12,9 +14,16 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Chatwork $chatwork)
     {
-        return view('/chat/index');
+        $res = $chatwork->getChatroom(CHATWORK_ROOM_ID);
+        $contacts_json = $chatwork->getContact(CHATWORK_ROOM_ID);
+        $res_array = json_decode($res, true);
+        $contacts = json_decode($contacts_json, true);
+        return view('/chat/index')->with([
+          'res_array' =>$res_array,
+          'contacts' =>$contacts,
+        ]);
     }
 
     /**
@@ -26,7 +35,7 @@ class ChatController extends Controller
     {
         //
         $chatwork = new Chatwork;
-        $res = $chatwork->postMessage('おはようございます。 from controller ', '155404542');
+        $res = $chatwork->postMessage('おはようございます。 from controller ', CHATWORK_ROOM_ID);
         return $res;
       }
 
@@ -47,9 +56,15 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Chatwork $chatwork, $room_id)
     {
         //
+
+        $chatMessage_json = $chatwork->getChatMessage($room_id);
+        $chatMessage = json_decode($chatMessage_json, true);
+        return view('/chat/show')->with([
+          'chatMessage' =>$chatMessage,
+        ]);
     }
 
     /**

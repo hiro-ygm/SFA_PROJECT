@@ -1,5 +1,17 @@
-<nav class='navbar nabvar-expand-md navbar-dark bg-dark fixed-top'>
+<nav class='navbar nabvar-expand-md navbar-dark bg-primary text-white fixed-top'>
   <a class="navbar-brand" href='{{ route('index') }}'>らく楽営業</a>
+
+  <div class="navbar_menu">
+      <a class="navbar-link text-white" href='{{ route('calendar.index') }}'>スケジュール</a>
+      <a class="navbar-link text-white" href='{{ route('project.index') }}'>案件管理</a>
+      <a class="navbar-link text-white" href='{{ route('customer.index') }}'>取引先管理</a>
+      <a class="navbar-link text-white" href='{{ route('chat.index') }}'>チャット</a>
+      <a class="navbar-link text-white" href='{{ route('analysis.index') }}'>データ分析</a>
+  </div>
+  </ul>
+
+
+
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
