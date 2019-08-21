@@ -4,16 +4,45 @@ $(function(){
 
 // 削除ボタン
 
-$('#delete_btn').click(function(){
-    if(!confirm('本当に削除しますか？')){
-        /* キャンセルの時の処理 */
-        return false;
-    }else{
-        /*　OKの時の処理 */
-        $('.modal').modal('hide');
-        $(this).dialog('close');
-    }
-});
+// $('a#delete_btn').click(function(){
+//     if(!confirm('本当に削除しますか？')){
+//         /* キャンセルの時の処理 */
+//         return false;
+//     }else{
+//         /*　OKの時の処理 */
+//         $('.modal').modal('hide');
+//         $(this).dialog('close');
+//     }
+//
+// var cmds = document.getElementsByClassName('del');
+// var i;
+// for (i = 0; i < cmds.length; i++) {
+//   cmds[i].addEventListener('click', function(e) {
+//     e.preventDefault();
+//     if (confirm('本当に削除してよろしいですか？')) {
+//       document.getElementById('form_' + this.dataset.id).submit();
+//     }
+//   });
+// }
+
+// =========
+// var cmds = document.getElementsByClassName('del');
+//   var i;
+//
+//   for (i = 0; i < cmds.length; i++) {
+//     cmds[i].addEventListener('click', function(e) {
+//       e.preventDefault();
+//       if (confirm('are you sure?')) {
+//         document.getElementById('form_' + this.dataset.id).submit();
+//       }
+//     });
+//   }
+// =========
+
+
+
+
+
 
 
 // チャット関連

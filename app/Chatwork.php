@@ -25,7 +25,7 @@ class Chatwork extends Model
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($curl);
         curl_close($curl);
-        return redirect('https://www.chatwork.com/#!rid{$room_id}');
+        // return redirect('https://www.chatwork.com/#!rid{$room_id}');
     }
 
       // chatworkからチャットルーム一覧に表示する情報を取得する
@@ -56,6 +56,18 @@ class Chatwork extends Model
   public static function getChatMessage($room_id){
       $headers = [ "X-ChatWorkToken: " . CHATWORK_TOKEN ];
       $curl = curl_init(API_URL . "/v2/rooms/{$room_id}/messages?force=1" );
+      curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+      $result = curl_exec($curl);
+      return $result;
+      curl_close($curl);
+  }
+
+    // chatworkからチャットメッセージを削除する
+  public static function deleteChatMessage($room_id,$message_id){
+      $headers = [ "X-ChatWorkToken: " . CHATWORK_TOKEN ];
+      $curl = curl_init(API_URL . "/v2/rooms/{$room_id}/messages/{$message_id}" );
+      curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
       curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
       $result = curl_exec($curl);

@@ -1,10 +1,11 @@
-<nav class='navbar nabvar-expand-md navbar-dark bg-primary text-white fixed-top'>
+<nav class='navbar nabvar-expand-md navbar-dark bg-primary text-white'>
   <a class="navbar-brand" href='{{ route('index') }}'>らく楽営業</a>
 
   <div class="navbar_menu">
-      <a class="navbar-link text-white" href='{{ route('calendar.index') }}'>スケジュール</a>
+      <!-- <a class="navbar-link text-white" href='{{ route('calendar.index') }}'>スケジュール</a> -->
+      <a class="navbar-link text-white" href='{{ route('process.index') }}'>営業プロセス管理</a>
       <a class="navbar-link text-white" href='{{ route('project.index') }}'>案件管理</a>
-      <a class="navbar-link text-white" href='{{ route('customer.index') }}'>取引先管理</a>
+      <a class="navbar-link text-white" href='{{ route('customer.index') }}'>顧客管理</a>
       <a class="navbar-link text-white" href='{{ route('chat.index') }}'>チャット</a>
       <a class="navbar-link text-white" href='{{ route('analysis.index') }}'>データ分析</a>
   </div>

@@ -1,27 +1,47 @@
 @extends('layouts.layout')
+@section('title','顧客管理一覧')
 @section('content')
 <div class="container">
   <h1 class="page_title">顧客管理メニュー</h1>
   @include('layouts.search')
-
-  <table class="table customer">
+  <a href="{{ route('customer.create') }}"><button type="button" class="btn btn-success mb-1">新規作成</button></a>
+  <table class="customer_table table customer">
     <thead class="thead-light">
       <tr>
-        <th>#</th>
+        <th></th>
         <th>個人名</th>
         <th>メールアドレス</th>
+        <th>携帯電話番号</th>
         <th>会社名</th>
         <th>部署名</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      @foreach($users as $user)
+      @foreach($customers as $customer)
       <tr>
-        <td><img src={{ asset( "img/" . $user->image ) }}></td>
-        <td>  {{ $user->name }}</td>
-        <td>  {{ $user->email }}</td>
-        <td>  {{ $user->customer->company_name }}</td>
-        <td>  {{ $user->department }}</td>
+        @if($customer->image_url)
+        <td><img src={{ asset("storage/". $customer->image_url) }} ></td>
+        @else
+        <td></td>
+        @endif
+        <td><a href="{{ route('customer.show',['id' => $customer->id]) }}">{{ $customer->customer_name }}</a></td>
+        <td><a href="{{ route('customer.show',['id' => $customer->id]) }}">{{ $customer->email }}</a></td>
+        <td><a href="{{ route('customer.show',['id' => $customer->id]) }}">{{ $customer->mobile_telno }}</a></td>
+        <td><a href="{{ route('customer.show',['id' => $customer->id]) }}">{{ $customer->company_name }}</a></td>
+        <td><a href="{{ route('customer.show',['id' => $customer->id]) }}">{{ $customer->department }}</a></td>
+        <td>
+            <!-- <a class="ml-1" href="{{ route('customer.show',['id' => $customer->id ]) }}">
+              <button type="button" name="button" class="btn btn-outline-dark">
+                詳細
+              </button>
+            </a> -->
+            <a class="ml-1" href="{{ route('customer.edit',['id' => $customer->id ]) }}">
+              <button type="button" name="button" class="btn btn-outline-info">
+                編集
+              </button>
+            </a>
+        </td>
       </tr>
       @endforeach
     </tbody>
