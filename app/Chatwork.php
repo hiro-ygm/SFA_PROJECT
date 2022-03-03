@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 define("API_URL", "https://api.chatwork.com");
-define("CHATWORK_TOKEN", "d69f80e66a7baa67a122bbe255193d0a");
+define("CHATWORK_TOKEN", "XXXXXXXXXXX");
 
 class Chatwork extends Model
 {
